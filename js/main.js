@@ -126,7 +126,7 @@ function loadData() {
                 id: 1,
                 name: "Classic Black T-Shirt",
                 price: 29.99,
-                image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                image: "https://images.unsplash.com/photo-1652695904797-36512b95c45a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fENsYXNzaWMlMjBCbGFjayUyMFQtU2hpcnR8ZW58MHx8MHx8fDA%3D",
                 category: "tshirts",
                 sizes: ["S", "M", "L", "XL"],
                 colors: ["Black", "White", "Gray"],
