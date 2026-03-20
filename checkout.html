@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - URBAN STYLE</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-   <div class="loader" id="loader">
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
         <div class="loader-spinner"></div>
     </div>
 
+    <!-- Navbar (same as index.html) -->
     <nav class="navbar">
         <a href="index.html" class="logo">URBAN STYLE</a>
         <div class="menu-toggle" id="menuToggle">
@@ -31,9 +33,10 @@
                 </a>
             </li>
         </ul>
-        </nav>
+    </nav>
 
-        <div class="checkout-container">
+    <!-- Checkout Container -->
+    <div class="checkout-container">
         <div class="checkout-form">
             <h2 style="margin-bottom: 2rem;">Shipping Information</h2>
             <form id="checkoutForm">
@@ -99,6 +102,8 @@
             <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" onclick="placeOrder()">Place Order</button>
         </div>
     </div>
+
+    <!-- Footer (same as index.html) -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -135,6 +140,5 @@
 
     <script src="js/main.js"></script>
     <script src="js/checkout.js"></script>
-    
 </body>
 </html>
