@@ -28,7 +28,12 @@ function handleLogin(event) {
     if (user) {
         currentUser = user;
         saveCurrentUser();
-        showNotification('Login successful!', 'success');
+        showNotification('Login successful! Welcome back, ' + (user.name || user.email.split('@')[0]) + '!', 'success');
+        
+        // Update user display immediately
+        if (typeof updateUserDisplay === 'function') {
+            updateUserDisplay();
+        }
         
         // Redirect based on user type
         if (user.isAdmin) {
@@ -55,6 +60,12 @@ function handleRegister(event) {
         return;
     }
     
+    // Validate password strength
+    if (password.length < 6) {
+        showNotification('Password must be at least 6 characters', 'error');
+        return;
+    }
+    
     // Check if user already exists
     if (users.some(u => u.email === email)) {
         showNotification('Email already registered', 'error');
@@ -67,7 +78,8 @@ function handleRegister(event) {
         name: name,
         email: email,
         password: password,
-        isAdmin: false
+        isAdmin: false,
+        createdAt: new Date().toISOString()
     };
     
     users.push(newUser);
@@ -75,21 +87,22 @@ function handleRegister(event) {
     
     showNotification('Registration successful! Please login.', 'success');
     
-    // Switch to login tab
+    // Switch to login tab and fill email
     switchAuthTab('login');
+    document.getElementById('loginEmail').value = email;
 }
 
-function logout() {
-    currentUser = null;
-    saveCurrentUser();
-    showNotification('Logged out successfully', 'success');
-    window.location.href = 'index.html';
-}
-
+// Check if user is logged in
 function isLoggedIn() {
     return currentUser !== null;
 }
 
+// Check if user is admin
 function isAdmin() {
     return currentUser && currentUser.isAdmin;
+}
+
+// Get current user
+function getCurrentUser() {
+    return currentUser;
 }

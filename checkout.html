@@ -14,26 +14,39 @@
     </div>
 
     <!-- Navbar (same as index.html) -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">URBAN STYLE</a>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="feedback.html">Reviews</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li class="cart-icon">
-                <a href="cart.html">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <!-- Sticky Navbar (Updated for all pages) -->
+<!-- Sticky Navbar with Active Page Support -->
+<nav class="navbar">
+    <a href="index.html" class="logo">URBAN STYLE</a>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="feedback.html">Reviews</a></li>
+        <li id="authNavItem">
+            <a href="login.html" id="authLink">Login</a>
+        </li>
+        <li><a href="admin.html">Admin</a></li>
+        <li class="cart-icon">
+            <a href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+        </li>
+        <li id="userAccountNav" style="display: none;">
+            <div class="user-account">
+                <i class="fas fa-user-circle"></i>
+                <span id="userName"></span>
+                <div class="user-dropdown">
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
 
     <!-- Checkout Container -->
     <div class="checkout-container">

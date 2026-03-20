@@ -28,6 +28,352 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+/* ===== ACTIVE PAGE NAVIGATION ===== */
+.nav-links a.active {
+    color: var(--accent-neon);
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-neon);
+    animation: glowPulse 1s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.5;
+        box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 5px 2px rgba(0, 243, 255, 0.6);
+    }
+    100% {
+        opacity: 0.5;
+        box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4);
+    }
+}
+
+/* Active page indicator with dot */
+.nav-links a.active::before {
+    content: '●';
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    font-size: 8px;
+    color: var(--accent-neon);
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Optional: Add active background for mobile */
+@media (max-width: 768px) {
+    .nav-links a.active {
+        background: rgba(0, 243, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+    
+    .nav-links a.active::before {
+        display: none;
+    }
+}
+/* Active page indicator with pulse effect */
+.nav-links a.active {
+    color: var(--accent-neon);
+    position: relative;
+    animation: navPulse 0.5s ease;
+}
+
+@keyframes navPulse {
+    0% {
+        text-shadow: 0 0 0 rgba(0, 243, 255, 0);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 0 rgba(0, 243, 255, 0);
+    }
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-neon);
+    animation: glowLine 1.5s ease-in-out infinite;
+}
+
+@keyframes glowLine {
+    0%, 100% {
+        width: 100%;
+        opacity: 0.5;
+        box-shadow: 0 0 0px rgba(0, 243, 255, 0);
+    }
+    50% {
+        width: 120%;
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(0, 243, 255, 0.8);
+    }
+}
+
+/* Special active state for cart icon */
+.cart-icon.active-cart a {
+    color: var(--accent-neon);
+}
+
+.cart-icon.active-cart .cart-count {
+    animation: bounce 0.5s ease;
+}
+/* ===== USER ACCOUNT STYLES ===== */
+.user-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border-radius: 30px;
+    transition: var(--transition);
+}
+
+.user-account:hover {
+    background: var(--accent-neon);
+    color: var(--bg-primary);
+}
+
+.user-account i {
+    font-size: 1.2rem;
+}
+
+.user-account span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-card);
+    border-radius: 5px;
+    padding: 0.5rem;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.user-account:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+.user-dropdown a:hover {
+    background: var(--accent-neon);
+    color: var(--bg-primary);
+}
+
+/* Avatar styles */
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .user-account {
+        padding: 0.5rem;
+    }
+    
+    .user-account span {
+        display: none;
+    }
+    
+    .user-dropdown {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .user-account:hover .user-dropdown {
+        transform: translateY(0);
+    }
+}
+/* Enhanced User Account Styles */
+.user-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.user-account:hover {
+    background: var(--accent-neon);
+    border-color: var(--accent-neon);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+}
+
+.user-account i {
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.user-account:hover i {
+    transform: scale(1.1);
+}
+
+.user-account span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 0.5rem;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.user-account:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.user-dropdown a i {
+    width: 20px;
+    font-size: 1rem;
+}
+
+.user-dropdown a:hover {
+    background: var(--accent-neon);
+    color: var(--bg-primary);
+    transform: translateX(5px);
+}
+
+.user-dropdown a:hover i {
+    color: var(--bg-primary);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.user-account:hover .user-avatar {
+    transform: scale(1.1);
+    background: var(--bg-primary);
+    color: var(--accent-neon);
+}
+
+/* Welcome message style */
+.welcome-message {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: var(--accent-neon);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    animation: slideInRight 0.5s ease, fadeOut 3s ease 2s forwards;
+    z-index: 999;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
 /* ===== LOADING ANIMATION ===== */
 .loader {
