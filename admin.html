@@ -32,5 +32,28 @@
             </li>
         </ul>
     </nav>
+
+    <div class="admin-container">
+        <h1 class="section-title">ADMIN DASHBOARD</h1>
+        
+        <!-- Admin Login Check -->
+        <div id="adminLoginCheck">
+            <div class="auth-card" style="max-width: 400px; margin: 0 auto;">
+                <h2 style="margin-bottom: 2rem;">Admin Login</h2>
+                <form onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label for="adminEmail">Email</label>
+                        <input type="email" id="adminEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+            </div>
+        </div>
 </body>
 </html>
