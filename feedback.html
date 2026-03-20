@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - URBAN STYLE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">URBAN STYLE</a>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Reviews</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Feedback Container -->
+    <div class="feedback-container">
+        <h1 class="section-title">CUSTOMER REVIEWS</h1>
+        
+        <!-- Review Form -->
+        <div class="feedback-form">
+            <h2 style="margin-bottom: 2rem;">Write a Review</h2>
+            <form onsubmit="submitReview(event)">
+                <div class="form-group">
+                    <label for="reviewName">Your Name</label>
+                    <input type="text" id="reviewName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewEmail">Your Email</label>
+                    <input type="email" id="reviewEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewProduct">Product</label>
+                    <select id="reviewProduct" class="filter-select" required>
+                        <option value="">Select a product</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating">
+                        <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                        <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                        <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                        <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                        <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewTitle">Review Title</label>
+                    <input type="text" id="reviewTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewContent">Your Review</label>
+                    <textarea id="reviewContent" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+        
+        <!-- Reviews List -->
+        <h2 style="margin-bottom: 2rem;">Latest Reviews</h2>
+        <div class="reviews-list" id="reviewsList"></div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>URBAN STYLE</h3>
+                <p>Premium clothing for the modern urban lifestyle. Quality meets style.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Reviews</a>
+                <a href="login.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, NY</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                <p><i class="fas fa-envelope"></i> info@urbanstyle.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 URBAN STYLE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>
