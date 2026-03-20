@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - URBAN STYLE</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Animation -->
     <div class="loader" id="loader">
         <div class="loader-spinner"></div>
     </div>
 
+    <!-- Navbar (same as index.html) -->
     <nav class="navbar">
         <a href="index.html" class="logo">URBAN STYLE</a>
         <div class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </div>
-
-         <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -32,9 +33,9 @@
                 </a>
             </li>
         </ul>
-
     </nav>
 
+    <!-- Product Details -->
     <div class="products-section" style="max-width: 1200px; margin: 0 auto;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;" id="productDetails">
             <!-- Product image will be loaded here -->
@@ -47,7 +48,8 @@
                 <h1 id="productTitle" style="font-size: 2.5rem; margin-bottom: 1rem;"></h1>
                 <p id="productPrice" style="font-size: 2rem; color: var(--accent-neon); margin-bottom: 1rem;"></p>
                 <p id="productDescription" style="color: var(--text-secondary); margin-bottom: 2rem;"></p>
-
+                
+                <!-- Size Selection -->
                 <div style="margin-bottom: 2rem;">
                     <h3 style="margin-bottom: 1rem;">Select Size</h3>
                     <div style="display: flex; gap: 1rem;" id="sizeOptions"></div>
@@ -73,5 +75,50 @@
                 <button class="btn btn-primary" style="width: 100%;" onclick="addToCart()">Add to Cart</button>
             </div>
         </div>
+        
+        <!-- Reviews Section -->
+        <div style="margin-top: 4rem;">
+            <h2 class="section-title">CUSTOMER REVIEWS</h2>
+            <div class="reviews-list" id="productReviews"></div>
+        </div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>URBAN STYLE</h3>
+                <p>Premium clothing for the modern urban lifestyle. Quality meets style.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Reviews</a>
+                <a href="login.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, NY</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                <p><i class="fas fa-envelope"></i> info@urbanstyle.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 URBAN STYLE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
 </body>
 </html>
