@@ -154,38 +154,70 @@ body {
     cursor: pointer;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION WITH BACKGROUND IMAGE ===== */
 .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('https://via.placeholder.com/1920x1080/111111/00f3ff?text=URBAN+STYLE') center/cover;
+    height: 90vh;
+    min-height: 600px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     animation: fadeIn 1s ease;
+    overflow: hidden;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+/* Hero Background with Overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.5);
+    z-index: 0;
+    animation: zoomIn 20s ease-out infinite alternate;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+        transform: scale(1.1);
     }
+}
+
+/* Optional: Add a gradient overlay for better text readability */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
     padding: 2rem;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
     animation: slideInLeft 1s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
 }
 
 @keyframes slideInLeft {
@@ -200,10 +232,11 @@ body {
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
     color: var(--text-secondary);
     animation: slideInRight 1s ease 0.2s both;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 @keyframes slideInRight {
@@ -295,6 +328,17 @@ body {
     width: 100px;
     height: 3px;
     background: var(--accent-neon);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .products-grid {
@@ -439,6 +483,17 @@ body {
     margin-bottom: 1rem;
     border-radius: 10px;
     animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .cart-item img {
@@ -882,8 +937,17 @@ footer {
         opacity: 1;
     }
 
+    .hero {
+        height: 70vh;
+        min-height: 500px;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
     }
 
     .cart-item {
