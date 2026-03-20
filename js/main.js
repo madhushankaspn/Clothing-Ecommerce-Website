@@ -126,7 +126,7 @@ function loadData() {
                 id: 1,
                 name: "Classic Black T-Shirt",
                 price: 29.99,
-                image: "https://images.unsplash.com/photo-1652695904797-36512b95c45a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fENsYXNzaWMlMjBCbGFjayUyMFQtU2hpcnR8ZW58MHx8MHx8fDA%3D",
+                image: "images/1.jpg",
                 category: "tshirts",
                 sizes: ["S", "M", "L", "XL"],
                 colors: ["Black", "White", "Gray"],
@@ -136,7 +136,7 @@ function loadData() {
                 id: 2,
                 name: "Slim Fit Jeans",
                 price: 79.99,
-                image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                image: "images/2.jpg",
                 category: "jeans",
                 sizes: ["30", "32", "34", "36"],
                 colors: ["Blue", "Black"],
@@ -146,7 +146,7 @@ function loadData() {
                 id: 3,
                 name: "Leather Jacket",
                 price: 199.99,
-                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                image: "images/3.jpg",
                 category: "jackets",
                 sizes: ["S", "M", "L", "XL"],
                 colors: ["Black", "Brown"],
@@ -156,31 +156,11 @@ function loadData() {
                 id: 4,
                 name: "Canvas Sneakers",
                 price: 49.99,
-                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                image: "images/4.jpg",
                 category: "accessories",
                 sizes: ["7", "8", "9", "10", "11"],
                 colors: ["White", "Black", "Red"],
                 description: "Classic canvas sneakers with cushioned insole. Perfect for casual wear."
-            },
-            {
-                id: 5,
-                name: "Hooded Sweatshirt",
-                price: 59.99,
-                image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "tshirts",
-                sizes: ["S", "M", "L", "XL"],
-                colors: ["Gray", "Black", "Navy"],
-                description: "Cozy hoodie with front pocket. Perfect for casual days."
-            },
-            {
-                id: 6,
-                name: "Denim Jacket",
-                price: 89.99,
-                image: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "jackets",
-                sizes: ["S", "M", "L", "XL"],
-                colors: ["Blue", "Black"],
-                description: "Classic denim jacket. Timeless style that never goes out."
             }
         ];
         saveProducts();

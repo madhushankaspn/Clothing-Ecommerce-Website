@@ -3,6 +3,7 @@ let currentProduct = null;
 let selectedSize = '';
 let selectedColor = '';
 let currentQuantity = 1;
+const defaultProductImage = 'images/6.jpg';
 
 // ===== PRODUCT PAGE FUNCTIONS =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -28,7 +29,12 @@ function loadProductDetails() {
     }
     
     // Set product details
-    document.getElementById('productImage').src = currentProduct.image;
+    const productImageEl = document.getElementById('productImage');
+    productImageEl.src = currentProduct.image || defaultProductImage;
+    productImageEl.onerror = function() {
+        this.onerror = null;
+        this.src = defaultProductImage;
+    };
     document.getElementById('productTitle').textContent = currentProduct.name;
     document.getElementById('productPrice').textContent = `$${currentProduct.price.toFixed(2)}`;
     document.getElementById('productDescription').textContent = currentProduct.description;

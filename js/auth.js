@@ -35,10 +35,14 @@ function handleLogin(event) {
             updateUserDisplay();
         }
         
-        // Redirect based on user type
-        if (user.isAdmin) {
-            window.location.href = 'admin.html';
+        // ✅ ADMIN REDIRECT - Check if user is admin
+        if (user.isAdmin === true) {
+            showNotification('Welcome Admin! Redirecting to dashboard...', 'success');
+            setTimeout(() => {
+                window.location.href = 'admin.html';
+            }, 500);
         } else {
+            // Regular user redirect
             window.location.href = 'index.html';
         }
     } else {
@@ -72,7 +76,7 @@ function handleRegister(event) {
         return;
     }
     
-    // Create new user
+    // Create new user (regular user, not admin)
     const newUser = {
         id: users.length + 1,
         name: name,
@@ -99,7 +103,7 @@ function isLoggedIn() {
 
 // Check if user is admin
 function isAdmin() {
-    return currentUser && currentUser.isAdmin;
+    return currentUser && currentUser.isAdmin === true;
 }
 
 // Get current user

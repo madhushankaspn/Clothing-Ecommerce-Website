@@ -13,74 +13,77 @@
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- Navbar (same as index.html) -->
-<!-- Sticky Navbar for Admin Page -->
-<nav class="navbar">
-    <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Urban Style Logo" class="logo-icon">
-        <span>URBAN STYLE</span>
-    </a>
-    <div class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-    </div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="feedback.html">Reviews</a></li>
-        <li id="authNavItem">
-            <a href="login.html" id="authLink">Login</a>
-        </li>
-        <li><a href="admin.html" class="active">Admin</a></li>
-        <li class="cart-icon">
-            <a href="cart.html">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
-        </li>
-        <li id="userAccountNav" style="display: none;">
-            <div class="user-account">
-                <i class="fas fa-user-circle"></i>
-                <span id="userName"></span>
-                <div class="user-dropdown">
-                    <a href="#" onclick="logout()">Logout</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">URBAN STYLE</a>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Reviews</a></li>
+            <li id="authNavItem">
+                <a href="login.html" id="authLink">Login</a>
+            </li>
+            <li><a href="admin.html" class="active">Admin</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </li>
+            <li id="userAccountNav" style="display: none;">
+                <div class="user-account">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName"></span>
+                    <div class="user-dropdown">
+                        <a href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-</nav>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Admin Container -->
     <div class="admin-container">
         <h1 class="section-title">ADMIN DASHBOARD</h1>
         
-        <!-- Admin Login Check -->
+        <!-- Admin Login Check - This shows if not logged in as admin -->
         <div id="adminLoginCheck">
             <div class="auth-card" style="max-width: 400px; margin: 0 auto;">
-                <h2 style="margin-bottom: 2rem;">Admin Login</h2>
+                <h2 style="margin-bottom: 2rem; color: var(--accent-neon);">Admin Login Required</h2>
+                <p style="margin-bottom: 1rem;">Please login with admin credentials to access the dashboard.</p>
                 <form onsubmit="handleAdminLogin(event)">
                     <div class="form-group">
                         <label for="adminEmail">Email</label>
-                        <input type="email" id="adminEmail" required>
+                        <input type="email" id="adminEmail" placeholder="admin@urbanstyle.com" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="adminPassword">Password</label>
-                        <input type="password" id="adminPassword" required>
+                        <input type="password" id="adminPassword" placeholder="admin123" required>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login as Admin</button>
                 </form>
+                <p style="margin-top: 1rem; text-align: center; color: var(--text-secondary);">
+                    Default: admin@urbanstyle.com / admin123
+                </p>
             </div>
         </div>
         
         <!-- Admin Dashboard (Hidden until login) -->
         <div id="adminDashboard" style="display: none;">
+            <!-- Admin Tabs -->
             <div class="admin-tabs">
-                <button class="admin-tab active" onclick="switchAdminTab('products')">Products</button>
-                <button class="admin-tab" onclick="switchAdminTab('orders')">Orders</button>
-                <button class="admin-tab" onclick="switchAdminTab('users')">Users</button>
-                <button class="admin-tab" onclick="switchAdminTab('reviews')">Reviews</button>
+                <button class="admin-tab active" onclick="switchAdminTab('products')">📦 Products</button>
+                <button class="admin-tab" onclick="switchAdminTab('orders')">📋 Orders</button>
+                <button class="admin-tab" onclick="switchAdminTab('users')">👥 Users</button>
+                <button class="admin-tab" onclick="switchAdminTab('reviews')">⭐ Reviews</button>
             </div>
             
             <!-- Products Panel -->
@@ -88,18 +91,22 @@
                 <h2 style="margin-bottom: 2rem;">Manage Products</h2>
                 
                 <!-- Add Product Form -->
-                <div class="product-form" id="productForm">
-                    <input type="text" id="productName" placeholder="Product Name" required>
-                    <input type="number" id="productPrice" placeholder="Price" required>
-                    <input type="text" id="productImage" placeholder="Image URL" required>
-                    <input type="text" id="productCategory" placeholder="Category" required>
-                    <input type="text" id="productSizes" placeholder="Sizes (comma separated)" required>
-                    <input type="text" id="productColors" placeholder="Colors (comma separated)" required>
-                    <textarea id="productDescription" placeholder="Description" rows="3" required></textarea>
-                    <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-neon);">➕ Add New Product</h3>
+                    <div class="product-form" id="productForm">
+                        <input type="text" id="productName" placeholder="Product Name" required>
+                        <input type="number" id="productPrice" placeholder="Price" required>
+                        <input type="text" id="productImage" placeholder="Image URL (e.g., images/1.jpg)" required>
+                        <input type="text" id="productCategory" placeholder="Category (tshirts/jeans/jackets/accessories)" required>
+                        <input type="text" id="productSizes" placeholder="Sizes (comma separated: S, M, L, XL)" required>
+                        <input type="text" id="productColors" placeholder="Colors (comma separated: Black, White, Blue)" required>
+                        <textarea id="productDescription" placeholder="Description" rows="3" required></textarea>
+                        <button class="btn btn-primary" onclick="addProduct()">➕ Add Product</button>
+                    </div>
                 </div>
                 
                 <!-- Products List -->
+                <h3 style="margin-bottom: 1rem;">📦 All Products</h3>
                 <div class="admin-products-grid" id="adminProductsList"></div>
             </div>
             
@@ -123,7 +130,7 @@
         </div>
     </div>
 
-    <!-- Footer (same as index.html) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
