@@ -444,7 +444,10 @@ body {
 }
 
 .logo-icon {
-    font-size: 1.3rem;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
 }
 
 .logo:hover {
