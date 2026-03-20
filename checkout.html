@@ -33,6 +33,72 @@
         </ul>
         </nav>
 
+        <div class="checkout-container">
+        <div class="checkout-form">
+            <h2 style="margin-bottom: 2rem;">Shipping Information</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Street Address</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="zipCode">ZIP Code</label>
+                    <input type="text" id="zipCode" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" class="filter-select" required>
+                        <option value="credit">Credit Card</option>
+                        <option value="debit">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="cash">Cash on Delivery</option>
+                    </select>
+                </div>
+            </form>
+        </div>
         
+        <div class="order-summary">
+            <h2 style="margin-bottom: 2rem;">Order Summary</h2>
+            <div id="orderItems"></div>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>Shipping:</span>
+                    <span>$10.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 1.3rem; color: var(--accent-neon);">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+    
 </body>
 </html>
