@@ -55,5 +55,52 @@
                 </form>
             </div>
         </div>
+        <div id="adminDashboard" style="display: none;">
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('products')">Products</button>
+                <button class="admin-tab" onclick="switchAdminTab('orders')">Orders</button>
+                <button class="admin-tab" onclick="switchAdminTab('users')">Users</button>
+                <button class="admin-tab" onclick="switchAdminTab('reviews')">Reviews</button>
+            </div>
+            
+            <!-- Products Panel -->
+            <div id="productsPanel" class="admin-panel">
+                <h2 style="margin-bottom: 2rem;">Manage Products</h2>
+                
+                <!-- Add Product Form -->
+                <div class="product-form" id="productForm">
+                    <input type="text" id="productName" placeholder="Product Name" required>
+                    <input type="number" id="productPrice" placeholder="Price" required>
+                    <input type="text" id="productImage" placeholder="Image URL" required>
+                    <input type="text" id="productCategory" placeholder="Category" required>
+                    <input type="text" id="productSizes" placeholder="Sizes (comma separated)" required>
+                    <input type="text" id="productColors" placeholder="Colors (comma separated)" required>
+                    <textarea id="productDescription" placeholder="Description" rows="3" required></textarea>
+                    <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
+                </div>
+                
+                <!-- Products List -->
+                <div class="admin-products-grid" id="adminProductsList"></div>
+            </div>
+            
+            <!-- Orders Panel -->
+            <div id="ordersPanel" class="admin-panel" style="display: none;">
+                <h2 style="margin-bottom: 2rem;">Manage Orders</h2>
+                <div id="ordersList"></div>
+            </div>
+            
+            <!-- Users Panel -->
+            <div id="usersPanel" class="admin-panel" style="display: none;">
+                <h2 style="margin-bottom: 2rem;">Manage Users</h2>
+                <div id="usersList"></div>
+            </div>
+            
+            <!-- Reviews Panel -->
+            <div id="reviewsPanel" class="admin-panel" style="display: none;">
+                <h2 style="margin-bottom: 2rem;">Manage Reviews</h2>
+                <div id="adminReviewsList"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
