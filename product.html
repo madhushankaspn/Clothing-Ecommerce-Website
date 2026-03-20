@@ -34,5 +34,44 @@
         </ul>
 
     </nav>
+
+    <div class="products-section" style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;" id="productDetails">
+            <!-- Product image will be loaded here -->
+            <div>
+                <img id="productImage" src="" alt="Product" style="width: 100%; border-radius: 10px;">
+            </div>
+            
+            <!-- Product info -->
+            <div>
+                <h1 id="productTitle" style="font-size: 2.5rem; margin-bottom: 1rem;"></h1>
+                <p id="productPrice" style="font-size: 2rem; color: var(--accent-neon); margin-bottom: 1rem;"></p>
+                <p id="productDescription" style="color: var(--text-secondary); margin-bottom: 2rem;"></p>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Select Size</h3>
+                    <div style="display: flex; gap: 1rem;" id="sizeOptions"></div>
+                </div>
+                
+                <!-- Color Selection -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Select Color</h3>
+                    <div style="display: flex; gap: 1rem;" id="colorOptions"></div>
+                </div>
+                
+                <!-- Quantity -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Quantity</h3>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                        <span id="quantity">1</span>
+                        <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                    </div>
+                </div>
+                
+                <!-- Add to Cart Button -->
+                <button class="btn btn-primary" style="width: 100%;" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
 </body>
 </html>
