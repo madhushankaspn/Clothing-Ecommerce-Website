@@ -8,81 +8,14 @@ let currentUser = null;
 let currentSlide = 0;
 let slideshowInterval = null;
 
-/// ===== HERO BACKGROUND SLIDESHOW =====
-let currentSlide = 0;
-let slideshowInterval;
-
+// Hero images array
 const heroImages = [
-    'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+    'images/1.jpg',
+    'images/2.jpg',
+    'images/3.jpg',
+    'images/4.jpg',
+    'images/5.jpg'
 ];
-
-function changeHeroBackground() {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        // Add fade out effect
-        hero.style.transition = 'opacity 0.5s ease-in-out';
-        hero.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Change background image
-            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${heroImages[currentSlide]}')`;
-            hero.style.backgroundSize = 'cover';
-            hero.style.backgroundPosition = 'center';
-            hero.style.backgroundRepeat = 'no-repeat';
-            
-            // Fade back in
-            hero.style.opacity = '1';
-            
-            // Update slide index
-            currentSlide = (currentSlide + 1) % heroImages.length;
-        }, 250);
-    }
-}
-
-function startSlideshow() {
-    // Set initial background
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${heroImages[0]}')`;
-        hero.style.backgroundSize = 'cover';
-        hero.style.backgroundPosition = 'center';
-        hero.style.backgroundRepeat = 'no-repeat';
-        hero.style.transition = 'opacity 0.5s ease-in-out';
-    }
-    
-    // Start interval (change every 2 seconds)
-    slideshowInterval = setInterval(changeHeroBackground, 2000);
-}
-
-// Initialize slideshow when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // ... existing code ...
-    
-    // Start hero slideshow
-    if (document.querySelector('.hero')) {
-        startSlideshow();
-    }
-});
-
-// Optional: Stop slideshow when user hovers over hero
-function stopSlideshow() {
-    clearInterval(slideshowInterval);
-}
-
-function restartSlideshow() {
-    slideshowInterval = setInterval(changeHeroBackground, 2000);
-}
-
-// Add hover effects
-if (document.querySelector('.hero')) {
-    document.querySelector('.hero').addEventListener('mouseenter', stopSlideshow);
-    document.querySelector('.hero').addEventListener('mouseleave', restartSlideshow);
-}
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -114,10 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set active nav link
     setActiveNavLink();
     
-    // Start hero slideshow
-    if (document.querySelector('.hero')) {
-        startSlideshow();
-    }
+    // Start hero slideshow (ALWAYS running)
+    startHeroSlideshow();
     
     // Add newsletter subscription if exists
     const newsletterForm = document.getElementById('newsletterForm');
@@ -133,6 +64,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+// ===== HERO SLIDESHOW FUNCTIONS =====
+function changeHeroBackground() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Fade out
+    hero.style.transition = 'opacity 0.5s ease-in-out';
+    hero.style.opacity = '0';
+    
+    setTimeout(() => {
+        // Change to next image
+        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${heroImages[currentSlide]}')`;
+        hero.style.backgroundSize = 'cover';
+        hero.style.backgroundPosition = 'center';
+        hero.style.backgroundRepeat = 'no-repeat';
+        
+        // Fade in
+        hero.style.opacity = '1';
+        
+        // Move to next slide
+        currentSlide = (currentSlide + 1) % heroImages.length;
+    }, 500);
+}
+
+function startHeroSlideshow() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Set initial background
+    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${heroImages[0]}')`;
+    hero.style.backgroundSize = 'cover';
+    hero.style.backgroundPosition = 'center';
+    hero.style.backgroundRepeat = 'no-repeat';
+    hero.style.transition = 'opacity 0.5s ease-in-out';
+    
+    // Start from second image
+    currentSlide = 1;
+    
+    // Clear any existing interval
+    if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+    }
+    
+    // Start slideshow - changes every 2 seconds
+    slideshowInterval = setInterval(changeHeroBackground, 5000);
+}
+
 // ===== DATA MANAGEMENT =====
 function loadData() {
     // Load products
@@ -146,7 +126,7 @@ function loadData() {
                 id: 1,
                 name: "Classic Black T-Shirt",
                 price: 29.99,
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                 category: "tshirts",
                 sizes: ["S", "M", "L", "XL"],
                 colors: ["Black", "White", "Gray"],
@@ -278,73 +258,11 @@ function saveCurrentUser() {
     }
 }
 
-// ===== HERO BACKGROUND SLIDESHOW =====
-function changeHeroBackground() {
-    const hero = document.querySelector('.hero');
-    if (hero && slideshowInterval) {
-        // Add fade out effect
-        hero.style.transition = 'opacity 0.5s ease-in-out';
-        hero.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Change background image with gradient overlay
-            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${heroImages[currentSlide]}')`;
-            hero.style.backgroundSize = 'cover';
-            hero.style.backgroundPosition = 'center';
-            hero.style.backgroundRepeat = 'no-repeat';
-            
-            // Fade back in
-            hero.style.opacity = '1';
-            
-            // Update slide index for next time
-            currentSlide = (currentSlide + 1) % heroImages.length;
-        }, 250);
-    }
-}
-
-function startSlideshow() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    // Set initial background
-    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${heroImages[0]}')`;
-    hero.style.backgroundSize = 'cover';
-    hero.style.backgroundPosition = 'center';
-    hero.style.backgroundRepeat = 'no-repeat';
-    hero.style.transition = 'opacity 0.5s ease-in-out';
-    
-    // Start with slide 1
-    currentSlide = 1;
-    
-    // Clear any existing interval
-    if (slideshowInterval) {
-        clearInterval(slideshowInterval);
-    }
-    
-    // Start interval to change every 2 seconds
-    slideshowInterval = setInterval(changeHeroBackground, 2000);
-    
-    // Add hover controls
-    hero.addEventListener('mouseenter', function() {
-        if (slideshowInterval) {
-            clearInterval(slideshowInterval);
-            slideshowInterval = null;
-        }
-    });
-    
-    hero.addEventListener('mouseleave', function() {
-        if (!slideshowInterval) {
-            slideshowInterval = setInterval(changeHeroBackground, 2000);
-        }
-    });
-}
-
 // ===== USER ACCOUNT DISPLAY =====
 function updateUserDisplay() {
     const authNavItem = document.getElementById('authNavItem');
     const userAccountNav = document.getElementById('userAccountNav');
     const userNameSpan = document.getElementById('userName');
-    const authLink = document.getElementById('authLink');
     
     if (currentUser) {
         // User is logged in - show account dropdown
@@ -401,13 +319,6 @@ function setActiveNavLink() {
     
     const navLinks = document.querySelectorAll('.nav-links a');
     
-    // Define page groups for highlighting
-    const pageGroups = {
-        'shop': ['shop.html', 'product.html'],
-        'account': ['login.html', 'register.html'],
-        'home': ['index.html', '']
-    };
-    
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href');
         link.classList.remove('active');
@@ -417,15 +328,7 @@ function setActiveNavLink() {
             link.classList.add('active');
         }
         
-        // Check page groups
-        if (pageGroups.shop.includes(currentPage) && linkHref === 'shop.html') {
-            link.classList.add('active');
-        }
-        
-        if (pageGroups.account.includes(currentPage) && linkHref === 'login.html') {
-            link.classList.add('active');
-        }
-        
+        // Special cases
         if ((currentPage === '' || currentPage === 'index.html') && linkHref === 'index.html') {
             link.classList.add('active');
         }
@@ -434,22 +337,7 @@ function setActiveNavLink() {
         if (currentPage === 'product.html' && linkHref === 'shop.html') {
             link.classList.add('active');
         }
-        
-        // For cart page, highlight cart icon
-        if (currentPage === 'cart.html' && link.parentElement && link.parentElement.classList.contains('cart-icon')) {
-            link.parentElement.classList.add('active-cart');
-        }
     });
-    
-    // Add special styling for cart icon active state
-    const cartIcon = document.querySelector('.cart-icon');
-    if (currentPage === 'cart.html' && cartIcon) {
-        cartIcon.style.opacity = '1';
-        cartIcon.style.transform = 'scale(1.05)';
-    } else if (cartIcon) {
-        cartIcon.style.opacity = '';
-        cartIcon.style.transform = '';
-    }
 }
 
 // ===== CART FUNCTIONS =====
@@ -518,7 +406,6 @@ function clearCart() {
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     const bgColor = type === 'success' ? '#00ff88' : type === 'error' ? '#ff4444' : '#00f3ff';
-    const textColor = '#000000';
     
     notification.style.cssText = `
         position: fixed;
@@ -526,7 +413,7 @@ function showNotification(message, type = 'info') {
         right: 20px;
         padding: 1rem 2rem;
         background: ${bgColor};
-        color: ${textColor};
+        color: #000000;
         border-radius: 5px;
         z-index: 9999;
         animation: slideInRight 0.3s ease;
@@ -600,7 +487,7 @@ window.quickAddToCart = quickAddToCart;
 window.showNotification = showNotification;
 window.logout = logout;
 
-// Add CSS animations if not already present
+// Add CSS animations
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
     @keyframes slideInRight {
@@ -614,26 +501,15 @@ styleSheet.textContent = `
         }
     }
     
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
     .user-avatar {
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        background: var(--accent-neon);
+        background: #00f3ff;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--bg-primary);
+        color: #000000;
         font-weight: bold;
         font-size: 1rem;
         transition: all 0.3s ease;
@@ -641,16 +517,10 @@ styleSheet.textContent = `
     
     .user-account:hover .user-avatar {
         transform: scale(1.1);
-        background: var(--bg-primary);
-        color: var(--accent-neon);
-    }
-    
-    .active-cart a {
-        color: var(--accent-neon) !important;
     }
     
     .nav-links a.active {
-        color: var(--accent-neon);
+        color: #00f3ff !important;
         position: relative;
     }
     
@@ -661,19 +531,7 @@ styleSheet.textContent = `
         left: 0;
         width: 100%;
         height: 2px;
-        background: var(--accent-neon);
-        animation: glowPulse 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes glowPulse {
-        0%, 100% {
-            opacity: 0.5;
-            box-shadow: 0 0 0px rgba(0, 243, 255, 0);
-        }
-        50% {
-            opacity: 1;
-            box-shadow: 0 0 8px rgba(0, 243, 255, 0.8);
-        }
+        background: #00f3ff;
     }
 `;
 document.head.appendChild(styleSheet);
